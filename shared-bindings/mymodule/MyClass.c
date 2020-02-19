@@ -53,15 +53,34 @@ STATIC mp_obj_t mymodule_myclass_obj___exit__(size_t n_args, const mp_obj_t *arg
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mymodule_myclass___exit___obj, 4, 4, mymodule_myclass_obj___exit__);
 
+//|   .. attribute:: question
+//|
+//|     The question of life, the universe and everything
+//|
+STATIC mp_obj_t mymodule_myclass_obj_get_question(mp_obj_t self_in) {
+  char *str = shared_module_mymodule_myclass_get_question(self_in);
+  return mp_obj_new_str(str, strlen(str));
+}
+MP_DEFINE_CONST_FUN_OBJ_1(mymodule_myclass_get_question_obj, mymodule_myclass_obj_get_question);
+ 
+//|   .. attribute:: answer
+//|
+//|     The answer to the question of life, the universe and everything
+//|
+STATIC mp_obj_t mymodule_myclass_obj_get_answer(mp_obj_t self_in) {
+  return mp_obj_new_int(shared_module_mymodule_myclass_get_answer(self_in));
+}
+MP_DEFINE_CONST_FUN_OBJ_1(mymodule_myclass_get_answer_obj, mymodule_myclass_obj_get_answer);
+
 const mp_obj_property_t mymodule_myclass_question_obj = {
     .base.type = &mp_type_property,
-    .proxy = {(mp_obj_t)&mymodule_myclass_question_obj,
+    .proxy = {(mp_obj_t)&mymodule_myclass_get_question_obj,
               (mp_obj_t)&mp_const_none_obj},
 };
 
 const mp_obj_property_t mymodule_myclass_answer_obj = {
     .base.type = &mp_type_property,
-    .proxy = {(mp_obj_t)&mymodule_myclass_answer_obj,
+    .proxy = {(mp_obj_t)&mymodule_myclass_get_answer_obj,
               (mp_obj_t)&mp_const_none_obj},
 };
 
@@ -77,7 +96,7 @@ STATIC MP_DEFINE_CONST_DICT(mymodule_myclass_locals_dict, mymodule_myclass_local
 
 const mp_obj_type_t mymodule_myclass_type = {
     { &mp_type_type },
-    .name = MP_QSTR_Meaning,
+    .name = MP_QSTR_MyModule,
     .make_new = mymodule_myclass_make_new,
     .locals_dict = (mp_obj_dict_t*)&mymodule_myclass_locals_dict,
 };

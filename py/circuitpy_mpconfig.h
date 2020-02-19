@@ -284,6 +284,13 @@ extern const struct _mp_obj_module_t bitbangio_module;
 #define BITBANGIO_MODULE
 #endif
 
+#if CIRCUITPY_MYMODULE
+#define MYMODULE_MODULE       { MP_OBJ_NEW_QSTR(MP_QSTR_mymodule), (mp_obj_t)&mymodule_module },
+extern const struct _mp_obj_module_t mymodule_module;
+#else
+#define MYMODULE_MODULE
+#endif
+
 #if CIRCUITPY_BLEIO
 #define BLEIO_MODULE           { MP_OBJ_NEW_QSTR(MP_QSTR__bleio), (mp_obj_t)&bleio_module },
 extern const struct _mp_obj_module_t bleio_module;
@@ -612,6 +619,7 @@ extern const struct _mp_obj_module_t ustack_module;
     AUDIOMP3_MODULE \
     AUDIOPWMIO_MODULE \
     BITBANGIO_MODULE \
+    MYMODULE_MODULE \
     BLEIO_MODULE \
     BOARD_MODULE \
     BUSIO_MODULE \
@@ -650,7 +658,6 @@ extern const struct _mp_obj_module_t ustack_module;
     USB_HID_MODULE \
     USB_MIDI_MODULE \
     USTACK_MODULE \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_mymodule), (mp_obj_t)&mymodule_module },   \
         
 // If weak links are enabled, just include strong links in the main list of modules,
 // and also include the underscore alternate names.
