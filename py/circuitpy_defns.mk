@@ -352,6 +352,8 @@ SRC_SHARED_MODULE_ALL = \
 	gamepad/__init__.c \
 	gamepadshift/GamePadShift.c \
 	gamepadshift/__init__.c \
+	mymodule/__init__.c \
+	mymodule/MyClass.c \
 	os/__init__.c \
 	random/__init__.c \
 	socket/__init__.c \

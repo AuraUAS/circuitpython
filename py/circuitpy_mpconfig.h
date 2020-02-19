@@ -226,6 +226,8 @@ typedef long mp_off_t;
 // These CIRCUITPY_xxx values should all be defined in the *.mk files as being on or off.
 // So if any are not defined in *.mk, they'll throw an error here.
 
+extern const struct _mp_obj_module_t mymodule_module;
+
 #if CIRCUITPY_ANALOGIO
 #define ANALOGIO_MODULE        { MP_OBJ_NEW_QSTR(MP_QSTR_analogio), (mp_obj_t)&analogio_module },
 extern const struct _mp_obj_module_t analogio_module;
@@ -648,7 +650,8 @@ extern const struct _mp_obj_module_t ustack_module;
     USB_HID_MODULE \
     USB_MIDI_MODULE \
     USTACK_MODULE \
-
+    { MP_OBJ_NEW_QSTR(MP_QSTR_mymodule), (mp_obj_t)&mymodule_module },   \
+        
 // If weak links are enabled, just include strong links in the main list of modules,
 // and also include the underscore alternate names.
 #if MICROPY_MODULE_WEAK_LINKS

@@ -191,6 +191,8 @@ SRC_SHARED_MODULE += wiznet/__init__.c wiznet/wiznet5k.c
 endif
 endif
 
+SRC_SHARED_MODULE += mymodule/__init__.c mymodule/MyClass.c
+
 # TODO
 #ifeq ($(CIRCUITPY_AUDIOBUSIO),1)
 #SRC_C += peripherals/samd/i2s.c peripherals/samd/$(CHIP_FAMILY)/i2s.c
