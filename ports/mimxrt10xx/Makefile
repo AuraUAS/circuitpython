@@ -191,7 +191,7 @@ SRC_SHARED_MODULE += wiznet/__init__.c wiznet/wiznet5k.c
 endif
 endif
 
-SRC_SHARED_MODULE += mymodule/__init__.c mymodule/MyClass.c
+SRC_SHARED_MODULE += uNavINS/__init__.c uNavINS/MyClass.c
 
 # TODO
 #ifeq ($(CIRCUITPY_AUDIOBUSIO),1)

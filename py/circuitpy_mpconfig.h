@@ -227,8 +227,6 @@ typedef long mp_off_t;
 // These CIRCUITPY_xxx values should all be defined in the *.mk files as being on or off.
 // So if any are not defined in *.mk, they'll throw an error here.
 
-extern const struct _mp_obj_module_t mymodule_module;
-
 #if CIRCUITPY_ANALOGIO
 #define ANALOGIO_MODULE        { MP_OBJ_NEW_QSTR(MP_QSTR_analogio), (mp_obj_t)&analogio_module },
 extern const struct _mp_obj_module_t analogio_module;
@@ -285,11 +283,11 @@ extern const struct _mp_obj_module_t bitbangio_module;
 #define BITBANGIO_MODULE
 #endif
 
-#if CIRCUITPY_MYMODULE
-#define MYMODULE_MODULE       { MP_OBJ_NEW_QSTR(MP_QSTR_mymodule), (mp_obj_t)&mymodule_module },
-extern const struct _mp_obj_module_t mymodule_module;
+#if CIRCUITPY_UNAVINS
+#define UNAVINS_MODULE       { MP_OBJ_NEW_QSTR(MP_QSTR_uNavINS), (mp_obj_t)&uNavINS_module },
+extern const struct _mp_obj_module_t uNavINS_module;
 #else
-#define MYMODULE_MODULE
+#define UNAVINS_MODULE
 #endif
 
 #if CIRCUITPY_BLEIO
@@ -620,7 +618,6 @@ extern const struct _mp_obj_module_t ustack_module;
     AUDIOMP3_MODULE \
     AUDIOPWMIO_MODULE \
     BITBANGIO_MODULE \
-    MYMODULE_MODULE \
     BLEIO_MODULE \
     BOARD_MODULE \
     BUSIO_MODULE \
@@ -656,6 +653,7 @@ extern const struct _mp_obj_module_t ustack_module;
     SUPERVISOR_MODULE \
     TOUCHIO_MODULE \
     UHEAP_MODULE \
+    UNAVINS_MODULE \
     USB_HID_MODULE \
     USB_MIDI_MODULE \
     USTACK_MODULE \
